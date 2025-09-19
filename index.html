@@ -3,234 +3,519 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IGNITE 2025 - SR University Fest</title>
-    <!-- Google Fonts for modern typography -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Grand Library | Welcome</title>
+    
+    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-        /* Custom styles to enhance Tailwind */
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* CSS Color Variables for Easy Theme Management */
+        :root {
+            --primary-color: #0a4d68; /* Deep Blue */
+            --secondary-color: #088395; /* Teal */
+            --accent-color: #f5a623; /* Warm Orange/Yellow */
+            --background-color: #f8f9fa; /* Light Gray */
+            --text-color: #343a40; /* Dark Gray */
+            --white-color: #ffffff;
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* General & Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e0a3c 0%, #1c3d7e 100%);
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
         }
-        .text-glow {
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 179, 237, 0.5);
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .card-hover-effect {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
         }
-        .card-hover-effect:hover {
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: var(--white-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .main-nav a {
+            font-weight: 600;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after, .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .login-btn {
+            background: var(--accent-color);
+            color: var(--white-color) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #e0930f;
+            transform: translateY(-2px);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 77, 104, 0.7), rgba(10, 77, 104, 0.7)), url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            /* A real high-quality library image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white-color);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--white-color);
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Features Section */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white-color);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(37, 117, 252, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
-        .btn-glow-hover:hover {
-            box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.5);
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
         }
-        /* Animation for elements on scroll */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        .feature-card p {
+            color: #6c757d;
         }
+        
+        /* Testimonial Section */
+        .testimonials {
+            background-color: var(--white-color);
+        }
+
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--background-color);
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .testimonial-card p {
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .testimonial-card h4 {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: #e0e0e0;
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer h3, .footer h4 {
+            color: var(--white-color);
+            margin-bottom: 20px;
+        }
+        
+        .footer-about h3 i {
+             margin-right: 8px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #e0e0e0;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-social a {
+            color: var(--white-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2a6f8a;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-social {
+                margin-top: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+             .menu-toggle {
+                display: block;
+            }
+            .main-nav {
+                display: none; /* Hide nav by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white-color);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .main-nav.active {
+                display: block; /* Show nav when active */
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+            .main-nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            .main-nav ul a {
+                padding: 1rem;
+                display: block;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .login-btn {
+                width: calc(100% - 40px);
+                margin: 20px;
+            }
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
     </style>
 </head>
-<body class="bg-slate-900 text-gray-300">
+<body>
 
-    <!-- Header & Navigation -->
-    <header class="bg-slate-900/80 backdrop-blur-lg shadow-lg shadow-blue-500/10 sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">IGNITE '25</a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">About</a>
-                <a href="#events" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Events</a>
-                <a href="#gallery" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Gallery</a>
-                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Contact</a>
-                <a href="#" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-purple-600 transition-all duration-300 btn-glow-hover">Register Now</a>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-book-open"></i> Grand Library
+            </a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-200">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block text-gray-300 hover:text-blue-400">About</a>
-            <a href="#events" class="block text-gray-300 hover:text-blue-400">Events</a>
-            <a href="#gallery" class="block text-gray-300 hover:text-blue-400">Gallery</a>
-            <a href="#contact" class="block text-gray-300 hover:text-blue-400">Contact</a>
-            <a href="#" class="block bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-center mt-2">Register Now</a>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-20"></div>
-            <div class="container mx-auto text-center relative">
-                <p class="text-xl md:text-2xl mb-2 text-gray-300 fade-in">SR University Presents</p>
-                <h1 class="text-5xl md:text-7xl font-black mb-4 text-glow fade-in" style="transition-delay: 100ms;">IGNITE 2025</h1>
-                <p class="text-xl md:text-2xl mb-8 text-gray-300 fade-in" style="transition-delay: 300ms;">Spark Your Passion. Fuel The Future.</p>
-                <div id="countdown" class="flex justify-center space-x-4 md:space-x-8 text-2xl md:text-4xl font-semibold mb-10 fade-in" style="transition-delay: 500ms;">
-                    <div><span id="days" class="block text-5xl md:text-6xl font-bold">00</span><span class="text-sm">Days</span></div>
-                    <div><span id="hours" class="block text-5xl md:text-6xl font-bold">00</span><span class="text-sm">Hours</span></div>
-                    <div><span id="minutes" class="block text-5xl md:text-6xl font-bold">00</span><span class="text-sm">Minutes</span></div>
-                    <div><span id="seconds" class="block text-5xl md:text-6xl font-bold">00</span><span class="text-sm">Seconds</span></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Your Gateway to a Universe of Knowledge</h1>
+            <p>Discover worlds, explore ideas, and connect with stories. Your next great adventure is just a click away.</p>
+            <a href="#" class="cta-button">Explore Our Collection</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Library?</h2>
+                <p>We provide world-class services to our members.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-book-atlas"></i>
+                    <h3>Vast Collection</h3>
+                    <p>Access thousands of books, journals, and digital resources across all genres and for all ages.</p>
                 </div>
-                <a href="#events" class="bg-white text-blue-500 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition-all duration-300 btn-glow-hover fade-in" style="transition-delay: 700ms;">Explore Events</a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 bg-slate-800">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-6 text-white fade-in">Welcome to the Biggest Fest of the Year!</h2>
-                <p class="max-w-3xl mx-auto text-gray-400 leading-relaxed fade-in">
-                    IGNITE is not just a fest; it's an experience. A three-day celebration of technology, culture, and boundless creativity. Join thousands of students from across the country to compete, learn, and create memories that will last a lifetime. Get ready for an unforgettable journey of innovation and excitement!
-                </p>
-            </div>
-        </section>
-
-        <!-- Events Section -->
-        <section id="events" class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in">Flagship Events</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Event Card 1 -->
-                    <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden card-hover-effect fade-in">
-                        <img src="https://placehold.co/600x400/2575fc/ffffff?text=RoboWars" class="w-full h-56 object-cover" alt="Robotics Competition">
-                        <div class="p-6">
-                            <h3 class="font-bold text-2xl mb-2 text-blue-400">RoboWars</h3>
-                            <p class="text-gray-400">Build your mean machine and battle it out in the arena of steel and sparks. Only the strongest will survive!</p>
-                        </div>
-                    </div>
-                    <!-- Event Card 2 -->
-                    <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden card-hover-effect fade-in">
-                        <img src="https://placehold.co/600x400/6a11cb/ffffff?text=Code-A-Thon" class="w-full h-56 object-cover" alt="Coding Competition">
-                        <div class="p-6">
-                            <h3 class="font-bold text-2xl mb-2 text-purple-400">Code-A-Thon</h3>
-                            <p class="text-gray-400">A 24-hour coding marathon. Assemble your team, solve real-world problems, and code your way to glory.</p>
-                        </div>
-                    </div>
-                    <!-- Event Card 3 -->
-                    <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden card-hover-effect fade-in">
-                        <img src="https://placehold.co/600x400/f83600/ffffff?text=Groove+Night" class="w-full h-56 object-cover" alt="Music and Dance">
-                        <div class="p-6">
-                            <h3 class="font-bold text-2xl mb-2 text-orange-400">Groove Night</h3>
-                            <p class="text-gray-400">Get ready to dance to the beats of famous DJs and artists. A night of electrifying music and unforgettable fun.</p>
-                        </div>
-                    </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Easy Digital Access</h3>
+                    <p>Borrow, renew, and reserve books online from the comfort of your home with our simple interface.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Events</h3>
+                    <p>Join our workshops, reading clubs, and author events to connect with fellow readers and writers.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="py-20 bg-slate-800">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in">Moments from Last Year</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="grid gap-4">
-                        <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x700/8EC5FC/E0C3FC?text=Fest+Crowd" alt=""></div>
-                        <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x400/f83600/f9d423?text=Stage+Lights" alt=""></div>
-                    </div>
-                    <div class="grid gap-4">
-                        <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x400/6a11cb/2575fc?text=Winners" alt=""></div>
-                        <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x700/fccb90/d57eeb?text=Performers" alt=""></div>
-                    </div>
-                    <div class="grid gap-4">
-                       <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x700/0093E9/80D0C7?text=Fun+Activities" alt=""></div>
-                       <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x400/85FFBD/FFFB7D?text=Tech+Expo" alt=""></div>
-                    </div>
-                     <div class="grid gap-4">
-                        <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x400/FBAB7E/F7CE68?text=Audience" alt=""></div>
-                        <div class="fade-in"><img class="h-auto max-w-full rounded-lg card-hover-effect" src="https://placehold.co/500x700/e8198b/c7eafd?text=Volunteers" alt=""></div>
-                    </div>
-                </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+        <div class="container">
+             <div class="section-title">
+                <h2>What Our Members Say</h2>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-white mb-4 fade-in">Get In Touch</h2>
-                <p class="text-gray-400 mb-8 fade-in">Have questions? We'd love to hear from you. Reach out to us!</p>
-                <div class="max-w-md mx-auto fade-in">
-                    <p class="text-lg mb-2"><strong>Email:</strong> <a href="mailto:contact@ignitefest.com" class="text-blue-400 hover:underline">contact@ignitefest.com</a></p>
-                    <p class="text-lg"><strong>Phone:</strong> +91 12345 67890</p>
-                </div>
+            <div class="testimonial-card">
+                <p>"This is the best library I've ever been a part of. The digital system is so easy to use, and the collection is incredible. Highly recommended for every book lover!"</p>
+                <h4>- Priya Sharma, Avid Reader</h4>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-black/50 text-gray-400 py-10">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 IGNITE Fest. All Rights Reserved.</p>
-            <p>Designed with ❤️ by SR University</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3><i class="fas fa-book-open"></i> Grand Library</h3>
+                    <p>Committed to fostering a lifelong love for reading and providing equitable access to information for everyone in our community.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Grand Library. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
-
+    
     <script>
-        // JavaScript for Countdown Timer
-        const countdownDate = new Date("Mar 15, 2026 09:00:00").getTime();
+        // Simple script for header scroll effect and mobile menu
+        const header = document.getElementById('header');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
 
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "<div class='text-4xl font-bold'>The Fest is LIVE!</div>";
+        // Change header background on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-        }, 1000);
-
-        // JavaScript for Mobile Menu
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
         });
-
-        // JavaScript for Fade-in animation on scroll
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = {
-            threshold: 0.2,
-            rootMargin: "0px 0px -50px 0px"
-        };
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
+        
+        // Toggle mobile navigation
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
         });
 
     </script>
+
 </body>
 </html>
-
